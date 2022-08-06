@@ -1,0 +1,30 @@
+<div class="card-product" *ngIf="product">
+    <div class="card-image">
+        <mat-card class="example-card">
+            <img mat-card-image class="card-img" src="{{ product.url }}" alt="Photo of a Shiba Inu">
+        </mat-card>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">
+            {{ product.name }}
+        </h2>
+        <p class="card-price">
+            ${{ product.price }}
+        </p>
+        <p class="card-description">
+            {{ product.description }}
+        </p>
+        <mat-form-field appearance="fill" class="card-quantity">
+            <mat-select [(ngModel)]="optionSelected" [(value)]="optionSelected">
+              <mat-option [value]="option" *ngFor="let option of options">{{ option }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-card-actions class="card-action">
+            &nbsp;&nbsp;<button mat-raised-button color="primary" (click)="addProductTocart(product)">Add to cart</button>
+        </mat-card-actions>
+        <p class="card-back" routerLink="/product">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to product list
+        </p>
+    </div>
+</div>

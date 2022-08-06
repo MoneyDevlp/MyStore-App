@@ -1,0 +1,29 @@
+.card-product {
+    display: flex;
+    justify-content: center;
+}
+
+.card-image {
+    margin-top: 100px;
+}
+
+.card-img {
+    height: 550px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.card-title {
+    font-weight: 500;
+}
+
+.card-content {
+    margin-left: 100px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.card-back {
+    color: steelblue;
+    cursor: pointer;
+}

@@ -1,0 +1,19 @@
+<mat-card class="example-card">
+    <img mat-card-image class="card-image" src="{{ product.url }}" alt="Photo of a Shiba Inu" (click)="redirectProductDetail()">
+    <mat-card-content>
+      <p class="card-title" (click)="redirectProductDetail()">
+        {{ product.name }}
+      </p>
+      <p class="card-price">
+        ${{ product.price }}
+      </p>
+      <mat-form-field appearance="fill" class="card-quantity">
+        <mat-select [(ngModel)]="optionSelected" [(value)]="optionSelected">
+          <mat-option [value]="option" *ngFor="let option of options">{{ option }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions class="card-action">
+        <button mat-raised-button color="primary" (click)="addProductTocart(product)">Add to cart</button>
+    </mat-card-actions>
+</mat-card>

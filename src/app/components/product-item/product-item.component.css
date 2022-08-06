@@ -1,0 +1,36 @@
+.example-card {
+    max-width: 300px;
+    margin: 20px 140px;
+    float: left;
+  }
+  
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.card-title, .card-price {
+    text-align: center;
+}
+
+.card-title:hover {
+    cursor: pointer;
+    color: midnightblue;
+    font-weight: bold;
+}
+
+.card-action {
+    display: flex;
+    justify-content: center;
+}
+
+.card-quantity {
+    display: flex;
+    justify-content: center;
+}
+
+.card-image {
+    height: 500px;
+    object-fit: cover;
+    cursor: pointer;
+}

@@ -1,0 +1,57 @@
+.cart-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card-product {
+    display: flex;
+}
+
+.card-image {
+    margin-top: 50px;
+}
+
+.card-img {
+    height: 250px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.card-title {
+    font-weight: 500;
+}
+
+.card-content {
+    margin-left: 80px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.card-back {
+    color: steelblue;
+    cursor: pointer;
+}
+
+.card-form {
+    margin-top: 50px;
+}
+
+.card-total {
+    font-weight: bold;
+}
+
+.card-null {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.card-form form input::placeholder {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 13px;
+    color: #b2b2b2;
+}
+
+.clear-cart:hover {
+    cursor: pointer;
+}

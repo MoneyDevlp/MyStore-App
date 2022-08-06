@@ -1,0 +1,8 @@
+<h3 *ngIf="!isDisplay" class="text-err">You haven't made any purchases, please go back to Product List.</h3>
+<div class="payment-info" *ngIf="isDisplay">
+    <h2 class="text-success">Success 🎉</h2>
+    <p class="text-user">Thank you, <b>{{ paymentInfo.fullName }}</b></p>
+    <p class="text-total">Your <b>{{ paymentInfo.total }}</b> order is confirmed !</p>
+    <p class="text-ship">Please allow 1-3 business day for shipping</p>
+    <button type="button" class="btn btn-primary" routerLink="/product">Back to product list</button>
+</div>

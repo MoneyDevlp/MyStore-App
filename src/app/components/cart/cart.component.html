@@ -1,0 +1,50 @@
+<h3 *ngIf="!isEmpty" class="card-null">The product does not exist in the cart</h3>
+<div class="cart-container" *ngIf="isEmpty">
+    <div>
+        <div class="card-product" *ngFor="let product of products">
+            <div class="card-image">
+                <mat-card class="example-card">
+                    <img mat-card-image class="card-img" src="{{ product.url }}" alt="Photo of a Shiba Inu">
+                </mat-card>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">
+                    {{ product.name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-x clear-cart" (click)="deleteProduct(product.id)"></i>
+                </h2>
+                <p class="card-price">
+                    ${{ product.price }}
+                </p>
+                <div class="card-amount">
+                    <p class="card-amount--title">
+                        Amount:
+                    </p>
+                        <input matInput ngModel="{{ product.quantity }}" (ngModelChange)="onChangeProductCart($event,product)">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card-form">
+        <form [formGroup]="confirmForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Full name</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="fullname"
+              placeholder="minimum 5 characters and maximum 100 characters">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Address</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" formControlName="address"
+              placeholder="minimum 5 characters and maximum 200 characters">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Credit card number</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="creditCardNumber"
+                placeholder="16 digit number">
+                <div id="emailHelp" class="form-text">We'll never share your payment details with anyone else.</div>
+            </div>
+            <button type="submit" [disabled]="confirmForm.invalid" class="btn btn-primary">Submit</button>
+          </form>
+          <br>
+          <h3 class="card-total">Total: ${{ total }}</h3>
+    </div>
+</div>
