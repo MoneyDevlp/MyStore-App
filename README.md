@@ -1,27 +1,19 @@
 # MyStoreApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+MyStore is Angular application that allows users to view a list of available products to purchase, user can add them to a shopping cart, and ultimately complete the checkout process
 
-## Development server
+- `/` or `/product`. User can see list of products on this page and can add products to cart, when user clicks on the product will move to product detail page
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- `/product/:id`. Users can view product details and add products to cart on this page
 
-## Code scaffolding
+- `/cart`. Users can view, edit, delete products added to cart on this page. In addition, users can also enter information and make payments on this page
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- `/confirmation`. Users can view their order information on this page
 
-## Build
+## Getting Started
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- To get this project, type `git clone https://github.com/MoneyDevlp/MyStore-App.git` in your termical to clone this project to your computer.
+- Move into your project after open cmd or open project in vscode and open terminal
+- Run `npm install` to install all the dependencies.
+- Run `ng serve` to start the project.
+- Go to `localhost:4200` to see the app.
