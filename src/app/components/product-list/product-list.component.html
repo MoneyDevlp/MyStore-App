@@ -1,1 +1,1 @@
-<app-product-item *ngFor="let product of products" [product]="product"></app-product-item>
+<app-product-item *ngFor="let product of products" [product]="product" (addCart)="addProductTocart(product)" (option)="setQuantitySelected($event)"></app-product-item>

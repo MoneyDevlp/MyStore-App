@@ -52,6 +52,10 @@
     color: #b2b2b2;
 }
 
+.card-form form input {
+    width: 380px;
+}
+
 .clear-cart:hover {
     cursor: pointer;
 }

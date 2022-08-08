@@ -8,12 +8,12 @@
         ${{ product.price }}
       </p>
       <mat-form-field appearance="fill" class="card-quantity">
-        <mat-select [(ngModel)]="optionSelected" [(value)]="optionSelected">
+        <mat-select [(ngModel)]="optionSelected" (ngModelChange)="option.emit(optionSelected)">
           <mat-option [value]="option" *ngFor="let option of options">{{ option }}</mat-option>
         </mat-select>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions class="card-action">
-        <button mat-raised-button color="primary" (click)="addProductTocart(product)">Add to cart</button>
+        <button mat-raised-button color="primary" (click)="addCart.emit(product)">Add to cart</button>
     </mat-card-actions>
 </mat-card>

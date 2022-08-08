@@ -29,16 +29,21 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartService: CartServiceService,
-    private formBuilder: FormBuilder,
     private router: Router,
     private confirmService: ConfirmServiceService) { }
 
   ngOnInit(): void {
 
-    this.confirmForm = this.formBuilder.group({
-      fullname: ['', [Validators.required, Validators.maxLength(100), Validators.minLength(5)]],
-      address: ['', [Validators.required, Validators.maxLength(200), Validators.minLength(5)]],
-      creditCardNumber: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(16)]]
+    // this.confirmForm = this.formBuilder.group({
+    //   fullname: new FormControl('', [Validators.required, Validators.maxLength(100), Validators.minLength(5)]),
+    //   address: new FormControl('', [Validators.required, Validators.maxLength(200), Validators.minLength(5)]),
+    //   creditCardNumber: new FormControl('', [Validators.required, Validators.maxLength(16), Validators.minLength(16)])
+    // })
+
+    this.confirmForm = new FormGroup({
+      fullName: new FormControl('', [Validators.required, Validators.maxLength(100), Validators.minLength(5)]),
+      address: new FormControl('', [Validators.required, Validators.maxLength(200), Validators.minLength(5)]),
+      creditCardNumber: new FormControl('', [Validators.required, Validators.maxLength(16), Validators.minLength(16)])
     })
 
     this.getListProductCart();
@@ -49,6 +54,13 @@ export class CartComponent implements OnInit {
     }
 
   }
+
+  get fullname() { return this.confirmForm.get('fullName'); }
+
+  get addRess() { return this.confirmForm.get('address'); }
+
+  get creditCardnumber() { return this.confirmForm.get('creditCardNumber'); }
+
 
   getListProductCart() {
     this.products = this.cartService.getListProductsCart();
@@ -75,22 +87,10 @@ export class CartComponent implements OnInit {
     }
   }
 
-  validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(field => {
-      console.log(field);
-      const control = formGroup.get(field);
-      if (control instanceof FormControl) {
-        control.markAsTouched({ onlySelf: true });
-      } else if (control instanceof FormGroup) {
-        this.validateAllFormFields(control);
-      }
-    });
-  }
-
   onSubmit() {
     if(this.confirmForm.valid) {
       const info = {
-        fullName: this.confirmForm.value.fullname,
+        fullName: this.confirmForm.value.fullName,
         address: this.confirmForm.value.address,
         creditCardNumber: this.confirmForm.value.creditCardNumber,
         total: this.total,
@@ -106,7 +106,11 @@ export class CartComponent implements OnInit {
       this.router.navigateByUrl('/confirmation');
     }
     else {
-      this.validateAllFormFields(this.confirmForm);
+      Swal.fire(
+        'Purchases',
+        'Payment error',
+        'error'
+      )
     }
   }
 

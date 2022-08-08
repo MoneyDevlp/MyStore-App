@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
@@ -12,6 +12,8 @@ import { CartServiceService } from 'src/app/services/cartService/cart-service.se
 export class ProductItemComponent implements OnInit {
 
   @Input() product: Product;
+  @Output() option = new EventEmitter();
+  @Output() addCart = new EventEmitter();
 
   public optionSelected: number = 1;
 
@@ -36,14 +38,4 @@ export class ProductItemComponent implements OnInit {
   public redirectProductDetail() {
     this.router.navigate([`/product/${this.product.id}`]);
   }
-
-  addProductTocart(product: Product) {
-    this.cartService.addProductToCart(product, this.optionSelected);
-    Swal.fire(
-      'Added!',
-      'Add product to cart successfully',
-      'success'
-    )
-  }
-
 }

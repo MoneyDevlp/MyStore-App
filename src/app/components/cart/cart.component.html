@@ -28,18 +28,52 @@
         <form [formGroup]="confirmForm" (ngSubmit)="onSubmit()">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Full name</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="fullname"
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="fullName"
               placeholder="minimum 5 characters and maximum 100 characters">
+            <div *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)" class="alert alert-danger">       
+                <div *ngIf="fullname.errors?.['required']">
+                    FullName is required !
+                </div>
+                <div *ngIf="fullname.errors?.['minlength']">
+                    FullName must be at least 5 characters long.
+                </div>
+                <div *ngIf="fullname.errors?.['maxlength']">
+                    FullName must be less than 100 characters
+                </div>
+            </div>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Address</label>
               <input type="text" class="form-control" id="exampleInputPassword1" formControlName="address"
               placeholder="minimum 5 characters and maximum 200 characters">
+            <div *ngIf="addRess.invalid && (addRess.dirty || addRess.touched)" class="alert alert-danger">       
+                <div *ngIf="addRess.errors?.['required']">
+                    Address is required !
+                </div>
+                <div *ngIf="addRess.errors?.['minlength']">
+                    Address must be at least 5 characters long.
+                </div>
+                <div *ngIf="addRess.errors?.['maxlength']">
+                    Address must be less than 200 characters
+                </div>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Credit card number</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="creditCardNumber"
                 placeholder="16 digit number">
+                <div *ngIf="creditCardnumber.invalid && (creditCardnumber.dirty || creditCardnumber.touched)" class="alert alert-danger">       
+                    <div *ngIf="creditCardnumber.errors?.['required']">
+                        CreditCardNumber is required !
+                    </div>
+                    <div *ngIf="creditCardnumber.errors?.['minlength']">
+                        CreditCardNumber must be at least 16 characters long.
+                    </div>
+                    <div *ngIf="creditCardnumber.errors?.['maxlength']">
+                        CreditCardNumber must be less than 16 characters
+                    </div>
+                </div>
+                <br>
                 <div id="emailHelp" class="form-text">We'll never share your payment details with anyone else.</div>
             </div>
             <button type="submit" [disabled]="confirmForm.invalid" class="btn btn-primary">Submit</button>
